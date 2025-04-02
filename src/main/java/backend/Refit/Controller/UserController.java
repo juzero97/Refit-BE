@@ -22,10 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
          return ResponseEntity.status(HttpStatus.CREATED).build();
      }
 
-    @PostMapping("/api/login")
-    public ResponseEntity<?> login(@RequestBody SignupRequest request) {
-        userService.login(request);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
+
  
  }

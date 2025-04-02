@@ -39,7 +39,5 @@ public class UserService {
         userRepository.save(member);
     }
 
-    public void login(SignupRequest request) {
 
-    }
 }
