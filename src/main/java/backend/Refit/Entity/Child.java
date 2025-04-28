@@ -1,13 +1,9 @@
 package backend.Refit.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -25,8 +21,12 @@ public class Child {
     private String size;
     private String  profile_image_url;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
+
     @Builder
-    public Child(Long id, String name, String gender, LocalDateTime birth_date, Double height, Double weight, String size, String profile_image_url) {
+    public Child(Long id, String name, String gender, LocalDateTime birth_date, Double height, Double weight, String size, String profile_image_url, Member member) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -35,5 +35,6 @@ public class Child {
         this.weight = weight;
         this.size = size;
         this.profile_image_url = profile_image_url;
+        this.member = member;
     }
 }

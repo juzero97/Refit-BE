@@ -7,9 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @RequiredArgsConstructor
@@ -29,6 +29,9 @@ import java.time.LocalDateTime;
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
     private String mobileNumber;
+
+    @OneToMany(mappedBy = "member",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<Child> children = new ArrayList<>();
 
    @Builder
     public Member(Long id, String email, String password, LocalDateTime createdAt, LocalDateTime updatedAt, String mobileNumber) {

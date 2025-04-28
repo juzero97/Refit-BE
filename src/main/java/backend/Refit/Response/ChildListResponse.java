@@ -1,13 +1,11 @@
 package backend.Refit.Response;
 
-
-import lombok.Builder;
+import backend.Refit.Entity.Child;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
-
 @Getter
-public class ChildResponse {
+public class ChildListResponse {
     private Long id;
     private String name;
     private String gender;
@@ -17,8 +15,7 @@ public class ChildResponse {
     private String size;
     private String  profile_image_url;
 
-    @Builder
-    public ChildResponse(Long id, String name, String gender, LocalDateTime birth_date, Double height, Double weight, String size, String profile_image_url) {
+    public ChildListResponse(Child child) {
         this.id = id;
         this.name = name;
         this.gender = gender;
